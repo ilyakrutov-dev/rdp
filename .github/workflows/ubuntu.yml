@@ -8,15 +8,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download
+    - name: Download ngrok
       run: wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-amd64.zip -O ngrok.zip
-    - name: Extract
+    - name: Extract ngrok
       run: unzip ngrok.zip
     - name: Auth
-      run: ./ngrok/ngrok authtoken $NGROKAUTHTOKEN
+      run: ./ngrok authtoken $NGROKAUTHTOKEN
       env:
         NGROKAUTHTOKEN: ${{ secrets.NGROKAUTHTOKEN }}
     - name: Enable SSH
       run: sudo ufw allow 22
     - name: Create Tunnel
-      run: ./ngrok/ngrok tcp 22
+      run: ./ngrok tcp 22
