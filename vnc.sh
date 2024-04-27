@@ -18,4 +18,4 @@ sudo mv rdp/xstartup ~/.vnc/xstartup
 
 sudo chmod +x ~/.vnc/xstartup
 
-vncserver
+vncserver -geometry 1920x1080
