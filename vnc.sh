@@ -1,4 +1,4 @@
-sudo apt-get update && apt install gnome-* tightvncserver 
+sudo apt-get update && sudo apt install gnome-* tightvncserver 
 
 vncserver << EOF
 q1qq1q
