@@ -13,9 +13,9 @@ jobs:
     - name: Extract ngrok
       run: unzip ngrok.zip
     - name: Auth
-      run: ./ngrok authtoken $NGROKAUTHTOKEN
+      run: ./ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
-        NGROKAUTHTOKEN: ${{ secrets.NGROKAUTHTOKEN }}
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Enable SSH
       run: sudo ufw allow 22
     - name: Create Tunnel
