@@ -17,7 +17,7 @@ jobs:
     - name: ls ngrok
       run: ls ngrok
     - name: Auth
-      run: ./ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
+      run: ./ngrok/ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Enable SSH
