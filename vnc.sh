@@ -1,4 +1,4 @@
-apt-get update && apt install xfce4-goodies tightvncserver xfce4
+apt-get update && apt install gnome-* tightvncserver 
 
 vncserver << EOF
 q1qq1q
@@ -10,7 +10,7 @@ echo OK
 # Останавливаем VNC сервер
 vncserver -kill :1
 
-echo "startxfce4 &" >> /root/.vnc/xstartup
+echo "gnome-session &" >> /root/.vnc/xstartup
 
 chmod -rwxr-xr-x /root/.vnc/xstartup
 
