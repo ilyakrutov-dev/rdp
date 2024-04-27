@@ -1,15 +1,5 @@
-#!/bin/bash
+apt-get update && apt install xfce4-goodies tightvncserver xfce4
 
-# Обновляем список пакетов
-sudo apt-get update -y
-
-# Устанавливаем окружение рабочего стола GNOME
-sudo apt-get install ubuntu-gnome-desktop -y
-
-# Устанавливаем VNC сервер
-sudo apt-get install tightvncserver -y
-
-# Запускаем VNC сервер, чтобы создать первоначальные настройки
 vncserver << EOF
 q1qq1q
 q1qq1q
@@ -20,12 +10,8 @@ echo OK
 # Останавливаем VNC сервер
 vncserver -kill :1
 
-# Создаём новый конфигурационный файл для VNC сервера
+echo "startxfce4 &" >> /root/.vnc/xstartup
 
-mv rdp/xstartup ~/.vnc/xstartup
+chmod -rwxr-xr-x /root/.vnc/xstartup
 
-# Делаем файл исполняемым
-sudo chmod +x ~/.vnc/xstartup
-
-# Запускаем VNC сервер с новыми настройками
 vncserver
