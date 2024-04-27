@@ -29,9 +29,11 @@ jobs:
     - name: Update
       run: sudo apt update -y && sudo apt upgrade -y
     - name: Install gnome
-      run: sudo apt install -y ubuntu-gnome-desktop tightvncserver
+      run: sudo apt install -y ubuntu-gnome-* tightvncserver
     - name: Script VNC server copy
       run: mv rdp/vnc.sh vnc.sh
+    - name: Start GDM
+      run: sudo systemctl start gdm
     - name: Start VNC server script
       run: sh vnc.sh
     - name: Create Tunnel
