@@ -29,6 +29,6 @@ jobs:
     - name: Script VNC server copy
       run: mv rdp/vnc.sh vnc.sh
     - name: Start VNC server script
-      run: sudo sh vnc.sh
+      run: sh vnc.sh
     - name: Create Tunnel
       run: ./ngrok tcp 5901
