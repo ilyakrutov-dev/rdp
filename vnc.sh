@@ -1,4 +1,4 @@
-apt-get update && apt install gnome-* tightvncserver 
+sudo apt-get update && apt install gnome-* tightvncserver 
 
 vncserver << EOF
 q1qq1q
@@ -10,8 +10,8 @@ echo OK
 # Останавливаем VNC сервер
 vncserver -kill :1
 
-echo "gnome-session &" >> /root/.vnc/xstartup
+sudo echo "gnome-session &" >> ~/.vnc/xstartup
 
-chmod -rwxr-xr-x /root/.vnc/xstartup
+sudo chmod -rwxr-xr-x ~/.vnc/xstartup
 
 vncserver
