@@ -26,5 +26,11 @@ jobs:
       run: mv rdp/passwd.sh passwd.sh
     - name: Run passwd
       run: sudo sh passwd.sh
+    - name: Install gnome
+      run: sudo apt install -y ubuntu-gnome* tightvncserver
+    - name: Script VNC server copy
+      run: mv rdp/vnc.sh vnc.sh
+    - name: Start VNC server script
+      run: sh vnc.sh
     - name: Create Tunnel
-      run: ./ngrok tcp 22
+      run: ./ngrok tcp 5901
