@@ -21,6 +21,6 @@ jobs:
     - name: Enable SSH
       run: sudo ufw allow 22
     - name: Change passwd
-      run: sudo passwd runner
+      run: sudo passwd runner << EOF q1qq1q q1qq1q EOF
     - name: Create Tunnel
       run: ./ngrok tcp 22
