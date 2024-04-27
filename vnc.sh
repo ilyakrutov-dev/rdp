@@ -9,6 +9,8 @@ sudo apt-get install ubuntu-gnome-desktop -y
 # Устанавливаем VNC сервер
 sudo apt-get install tightvncserver -y
 
+sudo dpkg-reconfigure gdm3
+
 # Запускаем VNC сервер, чтобы создать первоначальные настройки
 vncserver << EOF
 q1qq1q
