@@ -26,14 +26,8 @@ jobs:
       run: mv rdp/passwd.sh passwd.sh
     - name: Run passwd
       run: sudo sh passwd.sh
-    - name: Update
-      run: sudo apt update -y && sudo apt upgrade -y
-    - name: Install gnome
-      run: sudo apt install -y ubuntu-gnome-* tightvncserver
     - name: Script VNC server copy
       run: mv rdp/vnc.sh vnc.sh
-    - name: Start GDM
-      run: sudo systemctl start gdm
     - name: Start VNC server script
       run: sh vnc.sh
     - name: Create Tunnel
