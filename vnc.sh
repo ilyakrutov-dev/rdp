@@ -1,6 +1,15 @@
-sudo apt-get update
-sudo apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal tightvncserver
+#!/bin/bash
 
+# Обновляем список пакетов
+sudo apt-get update -y
+
+# Устанавливаем окружение рабочего стола GNOME
+sudo apt-get install ubuntu-gnome-desktop -y
+
+# Устанавливаем VNC сервер
+sudo apt-get install tightvncserver -y
+
+# Запускаем VNC сервер, чтобы создать первоначальные настройки
 vncserver << EOF
 q1qq1q
 q1qq1q
@@ -8,11 +17,21 @@ n
 EOF
 echo OK
 
+# Останавливаем VNC сервер
 vncserver -kill :1
 
-mv rdp/xstartup ~/.vnc/xstartup
+# Создаём новый конфигурационный файл для VNC сервера
+echo "
+#!/bin/sh
+xrdb $HOME/.Xresources
+xsetroot -solid grey
+export XKL_XMODMAP_DISABLE=1 
+/etc/X11/Xsession
+gnome-session &
+" > ~/.vnc/xstartup
 
-iptables -A INPUT -p tcp --dport 5901 -j ACCEPT
-iptables-save
+# Делаем файл исполняемым
+sudo chmod +x ~/.vnc/xstartup
 
+# Запускаем VNC сервер с новыми настройками
 vncserver
