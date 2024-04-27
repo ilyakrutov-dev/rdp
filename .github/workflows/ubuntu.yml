@@ -12,6 +12,10 @@ jobs:
       run: wget https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-linux-amd64.zip -O ngrok.zip
     - name: Extract ngrok
       run: unzip ngrok.zip
+    - name: ls
+      run: ls
+    - name: ls ngrok
+      run: ls ngrok
     - name: Auth
       run: ./ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
