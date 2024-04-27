@@ -27,7 +27,7 @@ jobs:
     - name: Run passwd
       run: sudo sh passwd.sh
     - name: Install gnome
-      run: sudo apt install -y ubuntu-gnome* tightvncserver
+      run: sudo apt install -y ubuntu-gnome-desktop tightvncserver
     - name: Script VNC server copy
       run: mv rdp/vnc.sh vnc.sh
     - name: Start VNC server script
