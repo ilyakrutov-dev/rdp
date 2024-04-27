@@ -1,5 +1,15 @@
-sudo apt-get update && sudo apt install gnome-* tightvncserver 
+#!/bin/bash
 
+# Обновляем список пакетов
+sudo apt-get update -y
+
+# Устанавливаем окружение рабочего стола GNOME
+sudo apt-get install ubuntu-gnome-desktop -y
+
+# Устанавливаем VNC сервер
+sudo apt-get install tightvncserver -y
+
+# Запускаем VNC сервер, чтобы создать первоначальные настройки
 vncserver << EOF
 q1qq1q
 q1qq1q
@@ -10,8 +20,18 @@ echo OK
 # Останавливаем VNC сервер
 vncserver -kill :1
 
-sudo echo "gnome-session &" >> ~/.vnc/xstartup
+# Создаём новый конфигурационный файл для VNC сервера
+echo "
+#!/bin/sh
+xrdb $HOME/.Xresources
+xsetroot -solid grey
+export XKL_XMODMAP_DISABLE=1 
+/etc/X11/Xsession
+gnome-session &
+" > ~/.vnc/xstartup
 
-sudo chmod -rwxr-xr-x ~/.vnc/xstartup
+# Делаем файл исполняемым
+sudo chmod +x ~/.vnc/xstartup
 
+# Запускаем VNC сервер с новыми настройками
 vncserver
