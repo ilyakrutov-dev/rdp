@@ -21,14 +21,8 @@ echo OK
 vncserver -kill :1
 
 # Создаём новый конфигурационный файл для VNC сервера
-echo "
-#!/bin/sh
-xrdb $HOME/.Xresources
-xsetroot -solid grey
-export XKL_XMODMAP_DISABLE=1 
-/etc/X11/Xsession
-gnome-session &
-" > ~/.vnc/xstartup
+
+mv rdp/xstartup ~/.vnc/xstartup
 
 # Делаем файл исполняемым
 sudo chmod +x ~/.vnc/xstartup
