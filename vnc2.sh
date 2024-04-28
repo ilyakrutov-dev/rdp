@@ -20,7 +20,7 @@ EOF
 vncserver -kill :1
 
 # Создаем конфигурационный файл xstartup
-mv rdp/xstartup ~/.vnc/xstartup
+mv rdp/xstartup-kde ~/.vnc/xstartup
 
 # Делаем файл исполняемым
 sudo chmod +x ~/.vnc/xstartup
