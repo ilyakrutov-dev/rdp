@@ -22,11 +22,22 @@ jobs:
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -restart -agent -console
     - name: Who I
       run: whoami
-    - name: download passwd
-      run: git clone https://github.com/BROILYA091/rdp
-    - name: Copy passwd
-      run: mv rdp/passwd.sh passwd.sh
-    - name: Run passwd
-      run: sudo sh passwd.sh
+    - name: Create user 1
+      run: sudo dscl . -create /Users/gh-runner
+    - name: Create user 2
+      run: sudo dscl . -create /Users/gh-runner UserShell /bin/bash
+    - name: Create user 3
+      run: sudo dscl . -create /Users/gh-runner RealName "GitHub runner"
+    - name: Create user 4
+      run: sudo dscl . -create /Users/gh-runner UniqueID "1001"
+    - name: Create user 5
+      run: sudo dscl . -create /Users/gh-runner PrimaryGroupID 20
+    - name: Create user 6
+      run: sudo dscl . -create /Users/gh-runner NFSHomeDirectory /Users/gh-runner
+    - name: Create user 7
+      run: sudo dscl . -passwd /Users/gh-runner password
+    - name: Create user 8
+      run: sudo dscl . -append /Groups/admin GroupMembership gh-runner
+      
     - name: Create Tunnel
       run: ./ngrok tcp 5900
