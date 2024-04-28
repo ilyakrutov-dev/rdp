@@ -16,5 +16,3 @@ mv rdp/xstartup-kde ~/.vnc/xstartup
 sudo chmod +x ~/.vnc/xstartup
 
 cp /etc/X11/Xresources/x11-common ~/.Xresources
-
-vncserver -rfbport 5901 -localhost no
