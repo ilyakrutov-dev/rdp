@@ -29,4 +29,4 @@ jobs:
     - name: Run passwd
       run: sudo sh passwd.sh
     - name: Create Tunnel
-      run: ./ngrok tcp 5901
+      run: ./ngrok tcp 5900
