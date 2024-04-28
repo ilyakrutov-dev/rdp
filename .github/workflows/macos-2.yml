@@ -1,9 +1,10 @@
 name: MacOs 2
+
 on: workflow_dispatch
 
 jobs: build:
 
-runs-on: macOS-latest
+runs-on: macos-latest
 
 steps:
 - name: Download
