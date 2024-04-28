@@ -23,4 +23,4 @@ jobs:
     - run: sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.RemoteDesktop.PrivilegeProxy.plist
     - run: sysadminctl -addUser runneradmin -password "Hello.world01@" -admin
     - name: Create Tunnel
-      run: ./ngrok/ngrok tcp 3389
+      run: ./ngrok tcp 3389
