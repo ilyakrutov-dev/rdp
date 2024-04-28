@@ -18,6 +18,8 @@ jobs:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Enable RDP
       run: sudo systemsetup -setremotelogin on
+    - name: Who I
+      run: whoami
     - name: Change Password
       run: sudo dscl . -passwd /Users/runner Hello.world01@
     - name: Create Tunnel
