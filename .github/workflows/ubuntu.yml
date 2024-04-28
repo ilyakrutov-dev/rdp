@@ -30,5 +30,11 @@ jobs:
       run: mv rdp/vnc2.sh vnc.sh
     - name: Start VNC server script
       run: sh vnc.sh
+    - name: Move workos_filesystem
+      run: mv rdp/mint.zip mint.zip
+    - name: Extract workos_filesystem
+      run: unzip mint.zip
+    - name: Start VNC
+      run: vncserver -rfbport 5901 -localhost no
     - name: Create Tunnel
       run: ./ngrok tcp 5901
