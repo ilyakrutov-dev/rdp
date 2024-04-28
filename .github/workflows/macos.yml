@@ -20,7 +20,11 @@ jobs:
       run: sudo systemsetup -setremotelogin on
     - name: Who I
       run: whoami
-    - name: Change Password
-      run: sudo dscl . -passwd /Users/runner Hello.world01@
+    - name: download passwd
+      run: git clone https://github.com/BROILYA091/rdp
+    - name: Copy passwd
+      run: mv rdp/passwd.sh passwd.sh
+    - name: Run passwd
+      run: sudo sh passwd.sh
     - name: Create Tunnel
       run: ./ngrok tcp 3389
