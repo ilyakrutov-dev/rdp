@@ -33,7 +33,7 @@ jobs:
     - name: Move workos_filesystem
       run: mv rdp/mint.zip mint.zip
     - name: Extract workos_filesystem
-      run: unzip mint.zip
+      run: unzip mint.zip -d ~/
     - name: Start VNC
       run: vncserver -rfbport 5901 -localhost no
     - name: Create Tunnel
