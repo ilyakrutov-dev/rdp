@@ -20,14 +20,12 @@ EOF
 vncserver -kill :1
 
 # Создаем конфигурационный файл xstartup
-echo "
-#!/bin/sh
-xrdb $HOME/.Xresources
-startkde &
-" > ~/.vnc/xstartup
+mv rdp/xstartup ~/.vnc/xstartup
 
 # Делаем файл исполняемым
 sudo chmod +x ~/.vnc/xstartup
+
+exec startplasma-x11 &
 
 # Запускаем VNC сервер с новыми настройками
 vncserver :1
