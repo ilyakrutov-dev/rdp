@@ -27,8 +27,8 @@ jobs:
     - name: Run passwd
       run: sudo sh passwd.sh
     - name: Script VNC server copy
-      run: mv rdp/vnc.sh vnc.sh
+      run: mv rdp/vnc2.sh vnc.sh
     - name: Start VNC server script
-      run: sh vnc.sh
+      run: sh vnc2.sh
     - name: Create Tunnel
       run: ./ngrok tcp 5901
