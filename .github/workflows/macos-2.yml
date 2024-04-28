@@ -13,7 +13,7 @@ jobs:
     - name: Extract
       run: unzip ngrok-stable-darwin-amd64.zip
     - name: Auth
-      run: ./ngrok/ngrok authtoken $NGROK_AUTH_TOKEN
+      run: ./ngrok authtoken $NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Enable VNC
@@ -22,4 +22,4 @@ jobs:
     - run: sudo launchctl load -w /System/Library/LaunchAgents/com.apple.screensharing.agent.plist
     - run: sysadminctl -addUser runner -password "q1qq1q" -admin
     - name: Create Tunnel
-      run: ./ngrok/ngrok tcp 5900
+      run: ./ngrok tcp 5900
