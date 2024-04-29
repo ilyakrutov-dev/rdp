@@ -20,6 +20,8 @@ jobs:
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -specifiedUsers
     - name: Allow access for admin user
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users admin -access -on -privs -all
+    - name: KickStart started
+      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -clientopts -setvnclegacy -vnclegacy yes
     - name: Create vnc-mac user 1
       run: sudo dscl . -create /Users/vnc-mac
     - name: Create vnc-mac user 2
