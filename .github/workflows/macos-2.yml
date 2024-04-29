@@ -1,4 +1,4 @@
-name: MacOs 2
+name: VNC Server Installation
 
 on: workflow_dispatch
 
@@ -8,18 +8,11 @@ jobs:
     runs-on: macOS-latest
 
     steps:
-    - name: Download
-      run: curl -O https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-darwin-amd64.zip
-    - name: Extract
-      run: unzip ngrok-stable-darwin-amd64.zip
-    - name: Auth
-      run: ./ngrok authtoken $NGROK_AUTH_TOKEN
-      env:
-        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-    - name: Enable VNC
-      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -privs -all
-    - run: sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.screensharing.plist
-    - run: sudo launchctl load -w /System/Library/LaunchAgents/com.apple.screensharing.agent.plist
-    - run: sysadminctl -addUser runner -password "q1qq1q" -admin
+    - name: Install VNC Server
+      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -specifiedUsers
+    - name: Allow access for admin user
+      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users admin -access -on -privs -all
+    - name: Start VNC Server
+      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers -restart -agent -privs -all -users admin
     - name: Create Tunnel
       run: ./ngrok tcp 5900
