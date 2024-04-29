@@ -20,13 +20,19 @@ jobs:
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -specifiedUsers
     - name: Allow access for admin user
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users admin -access -on -privs -all
-    - name: Create vnc-mac user
+    - name: Create vnc-mac user 1
       run: sudo dscl . -create /Users/vnc-mac
+    - name: Create vnc-mac user 2
       run: sudo dscl . -create /Users/vnc-mac UserShell /bin/bash
+    - name: Create vnc-mac user 3
       run: sudo dscl . -create /Users/vnc-mac RealName "VNC User"
+    - name: Create vnc-mac user 4    
       run: sudo dscl . -create /Users/vnc-mac UniqueID "1001"
+    - name: Create vnc-mac user 5
       run: sudo dscl . -create /Users/vnc-mac PrimaryGroupID 20
+    - name: Create vnc-mac user 6
       run: sudo dscl . -create /Users/vnc-mac NFSHomeDirectory /Users/vnc-mac
+    - name: Create vnc-mac user 7
       run: sudo dscl . -passwd /Users/vnc-mac q1qq1q
     - name: Start VNC Server
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers -restart -agent -privs -all -users admin,vnc-mac
