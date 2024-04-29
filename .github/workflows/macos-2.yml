@@ -12,7 +12,15 @@ jobs:
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -specifiedUsers
     - name: Allow access for admin user
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users admin -access -on -privs -all
+    - name: Create vnc-mac user
+      run: sudo dscl . -create /Users/vnc-mac
+      run: sudo dscl . -create /Users/vnc-mac UserShell /bin/bash
+      run: sudo dscl . -create /Users/vnc-mac RealName "VNC User"
+      run: sudo dscl . -create /Users/vnc-mac UniqueID "1001"
+      run: sudo dscl . -create /Users/vnc-mac PrimaryGroupID 20
+      run: sudo dscl . -create /Users/vnc-mac NFSHomeDirectory /Users/vnc-mac
+      run: sudo dscl . -passwd /Users/vnc-mac q1qq1q
     - name: Start VNC Server
-      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers -restart -agent -privs -all -users admin
+      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers -restart -agent -privs -all -users admin,vnc-mac
     - name: Create Tunnel
       run: ./ngrok tcp 5900
