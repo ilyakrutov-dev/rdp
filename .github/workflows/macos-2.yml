@@ -35,7 +35,7 @@ jobs:
     - name: Allow access for admin user
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users admin -access -on -privs -all
     - name: KickStart started
-      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -clientopts -setvnclegacy -vnclegacy yes
+      run: echo nol
     - name: Start VNC Server
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers -restart -agent -privs -all -users vnc-mac
     - name: Create Tunnel
