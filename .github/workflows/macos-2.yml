@@ -8,6 +8,14 @@ jobs:
     runs-on: macOS-latest
 
     steps:
+    - name: Download
+      run: curl -O https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-stable-darwin-amd64.zip
+    - name: Extract
+      run: unzip ngrok-stable-darwin-amd64.zip
+    - name: Auth
+      run: ./ngrok authtoken $NGROK_AUTH_TOKEN
+      env:
+        NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
     - name: Install VNC Server
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -specifiedUsers
     - name: Allow access for admin user
