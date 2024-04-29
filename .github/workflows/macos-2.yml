@@ -37,6 +37,6 @@ jobs:
     - name: KickStart started
       run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -clientopts -setvnclegacy -vnclegacy yes
     - name: Start VNC Server
-      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers -restart -agent -privs -all -users admin,vnc-mac
+      run: sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -allowAccessFor -specifiedUsers -restart -agent -privs -all -users vnc-mac
     - name: Create Tunnel
       run: ./ngrok tcp 5900
