@@ -35,6 +35,6 @@ jobs:
     - name: Extract workos_filesystem
       run: unzip mint.zip -d ~/
     - name: Start VNC
-      run: vncserver -rfbport 5901 -localhost no -wight 1280 -height 1024
+      run: vncserver -rfbport 5901 -localhost no -geometry 1280x1024
     - name: Create Tunnel
       run: ./ngrok tcp 5901
