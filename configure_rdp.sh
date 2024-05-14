@@ -9,13 +9,13 @@ NGROK_AUTH_TOKEN=$3
 sudo mdutil -i off -a
 
 # Create new account
-sudo dscl. -create /Users/rdpuser
-sudo dscl. -create /Users/rdpuser UserShell /bin/bash
-sudo dscl. -create /Users/rdpuser RealName "RDP User"
-sudo dscl. -create /Users/rdpuser UniqueID 1001
-sudo dscl. -create /Users/rdpuser PrimaryGroupID 80
-sudo dscl. -create /Users/rdpuser NFSHomeDirectory /Users/rdpuser
-sudo dscl. -passwd /Users/rdpuser $RDP_USER_PASSWORD
+sudo dscl . -create /Users/rdpuser
+sudo dscl . -create /Users/rdpuser UserShell /bin/bash
+sudo dscl . -create /Users/rdpuser RealName "RDP User"
+sudo dscl . -create /Users/rdpuser UniqueID 1001
+sudo dscl . -create /Users/rdpuser PrimaryGroupID 80
+sudo dscl . -create /Users/rdpuser NFSHomeDirectory /Users/rdpuser
+sudo dscl . -passwd /Users/rdpuser $RDP_USER_PASSWORD
 sudo createhomedir -c -u rdpuser > /dev/null
 
 # Enable RDP
