@@ -32,4 +32,4 @@ ngrok authtoken $NGROK_AUTH_TOKEN
 ngrok tcp 3389 &
 
 # Start RDP service
-sudo /usr/sbin/systemsetup -startremotelogin
+sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -users rdpuser
