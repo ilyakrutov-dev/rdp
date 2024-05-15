@@ -25,6 +25,6 @@ jobs:
       run: Start-Process -FilePath ".\ngrok\ngrok.exe" -ArgumentList "tcp 3389"
     - name: ngrok is now listening to VNC connections on...
       run: curl --silent http://127.0.0.1:4040/api/tunnels | jq '.tunnels[0].public_url'
-    - name: Create Tunnel 2
-      run: .\ngrok\ngrok.exe tcp 3389
+    - name: Processing
+      run: Start-Sleep -Seconds 25200
       
