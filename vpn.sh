@@ -118,7 +118,7 @@ if [[ ! -e /etc/openvpn/server/server.conf ]]; then
 		until [[ -z "$ip_number" || "$ip_number" =~ ^[0-9]+$ && "$ip_number" -le "$number_of_ip" ]]; do
 			echo "$ip_number: invalid selection."
 		done
-		[[ -z "$ip_number" ]] && ip_number="1"
+		[[ -z "$ip_number" ]] && ip_number="0"
 		ip=$(ip -4 addr | grep inet | grep -vE '127(\.[0-9]{1,3}){3}' | cut -d '/' -f 1 | grep -oE '[0-9]{1,3}(\.[0-9]{1,3}){3}' | sed -n "$ip_number"p)
 	fi
 	# If $ip is a private IP address, the server must be behind NAT
